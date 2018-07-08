@@ -1,0 +1,37 @@
+<%= form_with(model: bike, local: true) do |form| %>
+  <% if bike.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bike.errors.count, "error") %> prohibited this bike from being saved:</h2>
+
+      <ul>
+      <% bike.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bike_code %>
+    <%= form.number_field :bike_code, id: :bike_bike_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :bike_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, id: :bike_latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, id: :bike_longitude %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

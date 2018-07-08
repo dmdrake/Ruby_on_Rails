@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @ride.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @ride.end %>
+</p>
+
+<p>
+  <strong>Start latitude:</strong>
+  <%= @ride.start_latitude %>
+</p>
+
+<p>
+  <strong>Start longitude:</strong>
+  <%= @ride.start_longitude %>
+</p>
+
+<p>
+  <strong>End latitude:</strong>
+  <%= @ride.end_latitude %>
+</p>
+
+<p>
+  <strong>End longitude:</strong>
+  <%= @ride.end_longitude %>
+</p>
+
+<p>
+  <strong>Initial cost:</strong>
+  <%= @ride.initial_cost %>
+</p>
+
+<p>
+  <strong>Minute cost:</strong>
+  <%= @ride.minute_cost %>
+</p>
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>

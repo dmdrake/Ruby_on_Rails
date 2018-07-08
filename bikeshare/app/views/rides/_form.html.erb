@@ -1,0 +1,58 @@
+<%= form_with(model: ride, local: true) do |form| %>
+  <% if ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+      <% ride.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.datetime_select :start, id: :ride_start %>
+    <%= form.hidden_field :order_id, value: @user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end %>
+    <%= form.datetime_select :end, id: :ride_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_latitude %>
+    <%= form.text_field :start_latitude, id: :ride_start_latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_longitude %>
+    <%= form.text_field :start_longitude, id: :ride_start_longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_latitude %>
+    <%= form.text_field :end_latitude, id: :ride_end_latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_longitude %>
+    <%= form.text_field :end_longitude, id: :ride_end_longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :initial_cost %>
+    <%= form.number_field :initial_cost, id: :ride_initial_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minute_cost %>
+    <%= form.number_field :minute_cost, id: :ride_minute_cost %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
