@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p> Order Details</p>
+<% if !@order.order_items %>
+"There are no items in this order."
+<% else %>
+<%= "You have #{@order.order_items.count} #{"item".pluralize(@order.order_items.count)} in your order." %>
+
+<table class="table table-striped">
+	<thead>
+		<th>Item</th>
+		<th>Size</th>
+		<th>Price</th>
+	</thead>
+	<tbody>
+		<% @order.order_items.each do |item| %>
+			<tr>
+				<td><%= item.item_detail.menu_item.name %></td>
+				<td><%= item.item_detail.size %></td>
+				<td><%= number_to_currency(item.item_detail.price) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+	</table>
+
+<p>Order Subtotal:  </p>
+<%= number_to_currency(@order.subtotal) %>
+<% if @order.status_id != 2 %>
+<p>
+	<%= link_to 'Checkout', checkout_path(@order.id), :class=>"btn btn-primary" %>
+</p>
+<% else %>
+<i>This order has been completed.</i> <%= @order.payment.transaction_id%>
+<%end%>
+
+<% end %>

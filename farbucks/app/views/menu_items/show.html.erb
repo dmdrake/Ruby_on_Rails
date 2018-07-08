@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @menu_item.name %>
+</p>
+
+<p>
+  <strong>Menu image:</strong><br>
+<img src="https://storage.googleapis.com/farbucks_menu_images/<%= @menu_item.menu_image %>.jpg" />
+</p>
+
+<% @menu_item.item_details.each do |detail| %>
+  <%= render "item_detail_row", item_detail: detail, order_item: current_order.order_items.new %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
+<%= link_to 'Back', menu_items_path %>
